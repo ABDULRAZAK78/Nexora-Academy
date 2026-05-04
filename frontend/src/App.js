@@ -1,7 +1,7 @@
 import './App.css';
-import {BrowserRouter , Routes , Route} from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Login from './pages/auth/login';
-import Register from './pages/auth/register'
+import Register from './pages/auth/register';
 import Course from './pages/course/course';
 import Courses from './pages/course/Courses';
 import Profile from './pages/profile/profile';
@@ -13,31 +13,40 @@ import Assessment from './pages/assessment/Assessment';
 import ErrorPage from './pages/error/ErrorPage';
 import AddQuestions from './pages/dashBoard/AddQuestions';
 import Performance from './pages/profile/Performance';
-import certificate from './pages/assessment/certificate';
+import Certificate from './pages/assessment/certificate';
 import Forum from './pages/course/forum';
 import AdminDashboard from './pages/dashBoard/AdminDashboard';
+import { authService } from './api/auth.service';
+
+function GuestRoute({ element }) {
+  return authService.isUserAuthenticated() ? <Navigate to="/courses" /> : element;
+}
+
+function ProtectedRoute({ element }) {
+  return authService.isUserAuthenticated() ? element : <Navigate to="/login" />;
+}
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/addquestions/:id" element={<AddQuestions/>}/>
-          <Route path='/admin' Component={AdminDashboard}></Route>
-          <Route path='/login' Component={Login}></Route>
-          <Route path='/register' Component={Register}></Route>
-          <Route path='/' Component={Home}></Route>
-          <Route path='/courses' Component={Courses}></Route>
-          <Route path='/course/:id' Component={Course}></Route>
-          <Route path='/discussion/:id' Component={Forum}></Route>
-          <Route path='/certificate/:courseId' Component={certificate}></Route>
-          <Route path='/assessment/:id' Component={Assessment}></Route>
-          <Route path='/profile' Component={Profile}></Route>
-          <Route path='/Learnings' Component={Learnings}></Route>
-          <Route path='/Dcourses' Component={DCourses}></Route>
-          <Route path='/Dusers' Component={DUsers}></Route>
-          <Route path='/Performance' Component={Performance} />
-          <Route path='*' Component={ErrorPage}></Route>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<GuestRoute element={<Login />} />} />
+          <Route path="/register" element={<GuestRoute element={<Register />} />} />
+          <Route path="/courses" element={<Courses />} />
+          <Route path="/course/:id" element={<ProtectedRoute element={<Course />} />} />
+          <Route path="/discussion/:id" element={<ProtectedRoute element={<Forum />} />} />
+          <Route path="/certificate/:courseId" element={<ProtectedRoute element={<Certificate />} />} />
+          <Route path="/assessment/:id" element={<ProtectedRoute element={<Assessment />} />} />
+          <Route path="/profile" element={<ProtectedRoute element={<Profile />} />} />
+          <Route path="/Learnings" element={<ProtectedRoute element={<Learnings />} />} />
+          <Route path="/admin" element={<ProtectedRoute element={<AdminDashboard />} />} />
+          <Route path="/Dcourses" element={<ProtectedRoute element={<DCourses />} />} />
+          <Route path="/Dusers" element={<ProtectedRoute element={<DUsers />} />} />
+          <Route path="/Performance" element={<ProtectedRoute element={<Performance />} />} />
+          <Route path="/addquestions/:id" element={<ProtectedRoute element={<AddQuestions />} />} />
+          <Route path="*" element={<ErrorPage />} />
         </Routes>
       </BrowserRouter>
     </div>

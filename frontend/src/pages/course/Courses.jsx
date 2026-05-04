@@ -27,7 +27,10 @@ function Courses() {
         if (userId) {
           const enrollmentsRes = await learningService.getEnrollments(userId);
           if (enrollmentsRes.success) {
-            setEnrolled(enrollmentsRes.data.map((item) => item.course_id));
+            const list = Array.isArray(enrollmentsRes.data)
+              ? enrollmentsRes.data
+              : enrollmentsRes.data?.data || [];
+            setEnrolled(list.map((item) => item.courseId || item.course_id));
           }
         }
       } catch (err) {
@@ -57,9 +60,7 @@ function Courses() {
         case "instructor":
           return a.instructor.localeCompare(b.instructor);
         case "price":
-          const priceA = parseFloat(a.price.replace(/[^0-9.]/g, '')) || 0;
-          const priceB = parseFloat(b.price.replace(/[^0-9.]/g, '')) || 0;
-          return priceA - priceB;
+          return (parseFloat(a.price) || 0) - (parseFloat(b.price) || 0);
         default:
           return 0;
       }
@@ -167,7 +168,8 @@ function Courses() {
                   <div className="relative overflow-hidden">
                     <img 
                       src={course.p_link} 
-                      alt={course.course_name} 
+                      alt={course.course_name}
+                      onError={(e) => e.target.src = "/logo192.png"}
                       className="h-48 w-full object-cover group-hover:scale-105 transition-transform duration-200" 
                     />
                     <div className="absolute top-3 right-3">

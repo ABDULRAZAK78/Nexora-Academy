@@ -3,10 +3,11 @@ import api from "./api";
 async function getEnrollments(userId) {
   try {
     const { data } = await api.get(`/api/learning/${userId}`);
-    return { success: true, data };
+    const list = Array.isArray(data) ? data : [];  // ← THIS LINE ADDED
+    return { success: true, data: list };
   } catch (error) {
     console.error("Error fetching enrollments:", error);
-    return { success: false, error: "Could not fetch enrollments" };
+    return { success: false, data: [] };
   }
 }
 

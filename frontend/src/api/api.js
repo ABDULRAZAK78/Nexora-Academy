@@ -23,15 +23,22 @@ api.interceptors.request.use(
 api.interceptors.response.use(
   (response) => response,
   (error) => {
+    const url = error.config?.url || "";
+
+    // Silently ignore profile-image 404 — expected when no image uploaded yet
+    if (url.includes("profile-image")) {
+      return Promise.reject(error);
+    }
+
     if (error.response?.status === 401) {
-      message.destroy()
-      message.error("Session expired or unauthorized. Please log in again.");
+      message.destroy();
+      message.error("Session expired. Please log in again.");
       localStorage.clear();
       setTimeout(() => {
         window.location.href = "/login";
       }, 1000);
     } else if (error.response?.status === 403) {
-      message.error("You don’t have permission to perform this action.");
+      message.error("You don't have permission to perform this action.");
     } else if (error.response?.status === 404) {
       message.error("Requested resource not found.");
     } else if (error.response?.status >= 500) {

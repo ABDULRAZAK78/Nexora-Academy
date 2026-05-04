@@ -2,7 +2,7 @@ import axios from 'axios';
 
 axios.interceptors.request.use(
   async (config) => {
-    const token = localStorage.getItem('accessToken');
+    const token = localStorage.getItem('token'); // ← was 'accessToken', FIXED
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
@@ -12,3 +12,5 @@ axios.interceptors.request.use(
     return Promise.reject(error);
   }
 );
+
+export default axios;
