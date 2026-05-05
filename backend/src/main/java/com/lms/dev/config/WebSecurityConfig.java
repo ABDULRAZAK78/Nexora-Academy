@@ -43,7 +43,7 @@ public class WebSecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf(csrf -> csrf.disable())
-                .cors(cors -> cors.configurationSource(corsConfigurationSource())).cors(cors -> {})
+                .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .exceptionHandling(eh -> eh.authenticationEntryPoint(unauthorizedHandler))
                 .sessionManagement(sm -> sm.sessionCreationPolicy(org.springframework.security.config.http.SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
@@ -86,3 +86,4 @@ public class WebSecurityConfig {
         return source;
     }
 }
+
