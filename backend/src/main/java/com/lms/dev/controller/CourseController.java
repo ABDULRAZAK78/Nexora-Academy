@@ -1,4 +1,6 @@
 package com.lms.dev.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 import java.util.UUID;
 
@@ -43,6 +45,7 @@ public class CourseController {
         courseService.deleteCourse(id);
     }
 }
+
 
 
 

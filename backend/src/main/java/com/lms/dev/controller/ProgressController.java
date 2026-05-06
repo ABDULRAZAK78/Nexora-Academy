@@ -1,4 +1,6 @@
 package com.lms.dev.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,6 +31,7 @@ public class ProgressController {
         return progressService.updateDuration(request);
     }
 }
+
 
 
 
