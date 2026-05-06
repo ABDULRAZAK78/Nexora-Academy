@@ -1,1 +1,0 @@
-{ "rewrites": [{ "source": "/api/(.*)", "destination": "https://nexora-backend-5ce0.onrender.com/api/$1" }] }
