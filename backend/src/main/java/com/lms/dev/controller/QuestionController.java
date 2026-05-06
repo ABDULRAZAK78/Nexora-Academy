@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.UUID;
 
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/api/questions")
 public class QuestionController {
@@ -55,3 +56,4 @@ public class QuestionController {
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 }
+

@@ -12,6 +12,7 @@ import com.lms.dev.dto.DiscussionRequest;
 import com.lms.dev.entity.Discussion;
 import com.lms.dev.service.DiscussionService;
 
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/api/discussions")
 public class DiscussionController {
@@ -31,3 +32,4 @@ public class DiscussionController {
         return ResponseEntity.status(HttpStatus.CREATED).body(discussion);
     }
 }
+

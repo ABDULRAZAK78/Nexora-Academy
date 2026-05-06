@@ -6,11 +6,9 @@ COPY src ./src
 RUN mvn clean package -DskipTests
 
 FROM eclipse-temurin:17-jre-alpine
-RUN apk add --no-cache nginx
 WORKDIR /app
+RUN addgroup -S spring && adduser -S spring -G spring
+USER spring:spring
 COPY --from=builder /app/target/*.jar app.jar
-COPY nginx.conf /etc/nginx/nginx.conf
-COPY start.sh start.sh
-RUN chmod +x start.sh
-EXPOSE 80
-ENTRYPOINT ["./start.sh"]
+EXPOSE 8080
+ENTRYPOINT ["java","-jar","app.jar"]
