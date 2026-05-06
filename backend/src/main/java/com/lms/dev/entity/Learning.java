@@ -30,3 +30,4 @@ public class Learning {
     @JoinColumn(name = "course_id")
     private Course course;
 }
+

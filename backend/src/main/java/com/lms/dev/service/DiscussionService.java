@@ -4,7 +4,6 @@ import java.util.UUID;
 
 import com.lms.dev.dto.DiscussionRequest;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.lms.dev.entity.Course;
 import com.lms.dev.entity.Discussion;
@@ -30,3 +29,4 @@ public class DiscussionService {
         return discussionRepository.save(discussion);
     }
 }
+

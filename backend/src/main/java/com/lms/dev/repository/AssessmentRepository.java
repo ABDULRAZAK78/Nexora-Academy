@@ -15,3 +15,4 @@ public interface AssessmentRepository extends JpaRepository<Assessment, UUID> {
 
 	List<Assessment> findByUser(User user);
 }
+

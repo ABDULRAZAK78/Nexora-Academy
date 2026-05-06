@@ -30,3 +30,4 @@ public class Progress {
     private float playedTime;
     private float duration;
 }
+

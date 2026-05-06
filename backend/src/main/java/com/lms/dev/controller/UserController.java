@@ -1,5 +1,4 @@
 package com.lms.dev.controller;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -9,9 +8,7 @@ import com.lms.dev.entity.User;
 import com.lms.dev.service.UserService;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 import java.util.UUID;
 
 @RestController
@@ -69,5 +66,7 @@ public class UserController {
         return userService.getUserByEmail(email);
     }
 }
+
+
 
 

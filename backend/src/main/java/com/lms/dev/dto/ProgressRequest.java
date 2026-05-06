@@ -17,3 +17,4 @@ public class ProgressRequest {
     private float playedTime;
     private float duration;
 }
+

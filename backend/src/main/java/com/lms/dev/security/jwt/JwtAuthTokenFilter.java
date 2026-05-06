@@ -60,3 +60,4 @@ public class JwtAuthTokenFilter extends OncePerRequestFilter {
         return null;
     }
 }
+

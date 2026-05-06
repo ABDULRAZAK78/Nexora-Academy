@@ -12,3 +12,4 @@ public interface QuestionRepository extends JpaRepository<Questions, UUID> {
 
 	List<Questions> findByCourse(Course course); 
 }
+

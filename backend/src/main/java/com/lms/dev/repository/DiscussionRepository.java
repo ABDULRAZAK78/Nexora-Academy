@@ -11,3 +11,4 @@ public interface DiscussionRepository extends JpaRepository<Discussion, UUID> {
 
     List<Discussion> findByCourse(Course course);
 }
+

@@ -12,3 +12,4 @@ public interface ProgressRepository extends JpaRepository<Progress, UUID> {
 
 	Progress findByUserAndCourse(User user, Course course);
 }
+
