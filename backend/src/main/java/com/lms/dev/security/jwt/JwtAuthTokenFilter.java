@@ -27,6 +27,11 @@ public class JwtAuthTokenFilter extends OncePerRequestFilter {
     private final CustomUserDetailsService userDetailsService;
 
     @Override
+    @Override
+    protected boolean shouldNotFilter(jakarta.servlet.http.HttpServletRequest request) {
+        return request.getMethod().equals("OPTIONS");
+    }
+
     protected void doFilterInternal(HttpServletRequest request,
                                     HttpServletResponse response,
                                     FilterChain filterChain) throws ServletException, IOException {
@@ -60,3 +65,4 @@ public class JwtAuthTokenFilter extends OncePerRequestFilter {
         return null;
     }
 }
+
