@@ -8,7 +8,6 @@ import com.lms.dev.service.ProgressService;
 
 import java.util.UUID;
 
-@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/api/progress")
 public class ProgressController {
@@ -31,3 +30,4 @@ public class ProgressController {
         return progressService.updateDuration(request);
     }
 }
+

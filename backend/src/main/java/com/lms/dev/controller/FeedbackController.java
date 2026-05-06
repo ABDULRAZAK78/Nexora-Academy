@@ -9,7 +9,6 @@ import com.lms.dev.service.FeedbackService;
 import java.util.List;
 import java.util.UUID;
 
-@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/api/feedbacks")
 public class FeedbackController {
@@ -27,4 +26,5 @@ public class FeedbackController {
         return feedbackService.submitFeedback(fr);
     }
 }
+
 

@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import com.lms.dev.entity.Assessment;
 import com.lms.dev.entity.Course;
 import com.lms.dev.entity.User;
@@ -19,7 +18,6 @@ import com.lms.dev.service.AssessmentService;
 import com.lms.dev.service.CourseService;
 import com.lms.dev.service.UserService;
 
-@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/api/assessments")
 public class AssessmentController {
@@ -62,4 +60,5 @@ public class AssessmentController {
         return assessmentService.saveAssessment(user , course, assessment);
     }
 }
+
 

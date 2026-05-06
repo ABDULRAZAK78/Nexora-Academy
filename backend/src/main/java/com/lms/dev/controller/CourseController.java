@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 import com.lms.dev.entity.Course;
 import com.lms.dev.service.CourseService;
 
-@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/api/courses")
 public class CourseController {
@@ -45,3 +44,4 @@ public class CourseController {
         courseService.deleteCourse(id);
     }
 }
+

@@ -10,7 +10,6 @@ import com.lms.dev.service.LearningService;
 import java.util.List;
 import java.util.UUID;
 
-@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/api/learning")
 public class LearningController {
@@ -38,4 +37,5 @@ public class LearningController {
         learningService.unenrollCourse(id);
     }
 }
+
 
