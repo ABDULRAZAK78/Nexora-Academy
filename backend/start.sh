@@ -1,3 +1,4 @@
 #!/bin/sh
-nginx
-java -jar app.jar
+java -jar app.jar --server.port=8081 &
+sleep 10
+nginx -g "daemon off;"
